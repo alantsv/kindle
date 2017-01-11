@@ -5,8 +5,8 @@ class KindleUnlimeted
 {
 public:
 	//Método para fazer o download de um livro
-	void downloadBook(string );
-	void setBookName(string );
+	void downloadBook(string);
+	void setBookName(string);
 	string getBookName();
 
 private:

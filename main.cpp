@@ -1,13 +1,14 @@
 #include <iostream>
 #include <string>
-#include "kindleUli.h"
+#include "kindleUlimeted.h"
 using std::cout;
 using std::cin;
 using std::endl;
 using std::getline;
 using std::string;
 
-/*class KindleUnlimeted
+/*
+class KindleUnlimeted
 {
 public:
 	//Método para fazer o download de um livro
@@ -30,6 +31,7 @@ private:
 		string bookName;	
 };
 */
+
 int main ()
 {
 	string nameOfBook;

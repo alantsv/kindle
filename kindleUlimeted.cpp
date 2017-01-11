@@ -1,6 +1,9 @@
+#ifdef _KINDLE_H_
+#define _KINDLE_H_
+
 #include <iostream>
 #include <string>
-#include "kindleUli.h"
+#include "kindleUlimeted.h"
 using std::cout;
 using std::cin;
 using std::endl;
@@ -22,3 +25,5 @@ using std::string;
 	{
 		return bookName;
 	}
+
+#endif
