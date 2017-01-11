@@ -1,3 +1,6 @@
+#ifdef _KINDLE_H_
+#define _KIDLE_H_
+
 #include <string>
 using std::string;
 
@@ -12,3 +15,5 @@ public:
 private:
 	string bookName;	
 };
+
+#endif

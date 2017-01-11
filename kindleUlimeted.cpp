@@ -1,5 +1,3 @@
-#ifdef _KINDLE_H_
-#define _KINDLE_H_
 
 #include <iostream>
 #include <string>
@@ -26,4 +24,3 @@ using std::string;
 		return bookName;
 	}
 
-#endif
