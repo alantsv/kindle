@@ -7,6 +7,8 @@ using std::string;
 class KindleUnlimeted
 {
 public:
+	KindleUnlimeted();
+	KindleUnlimeted(string);
 	//Método para fazer o download de um livro
 	void downloadBook(string);
 	void setBookName(string);
