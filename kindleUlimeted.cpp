@@ -10,6 +10,7 @@ using std::string;
 
 
 	void KindleUnlimeted::KindleUnlimeted(){
+		this->bookName = "";
 	}
 	
 	void KindleUnlimeted::KindleUnlimeted(const string &book){
