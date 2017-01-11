@@ -8,6 +8,14 @@ using std::endl;
 using std::getline;
 using std::string;
 
+
+	void KindleUnlimeted::KindleUnlimeted(){
+	}
+	
+	void KindleUnlimeted::KindleUnlimeted(const string &book){
+		this->bookName = book;
+	}
+	
 	//Método para fazer o download de um livro
 	void KindleUnlimeted::downloadBook(string bookName)
 	{
