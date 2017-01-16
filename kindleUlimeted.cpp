@@ -25,7 +25,7 @@ using std::string;
     }
 	
 	//Método para fazer o download de um livro
-	void KindleUnlimeted::downloadBook(const string bookName)
+	void KindleUnlimeted::downloadBook(const string &bookName)
 	{
 		cout << "Downloading " << KidleUnlimeted.getBookName << "..." << endl;
 	}
