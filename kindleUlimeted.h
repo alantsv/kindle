@@ -1,4 +1,4 @@
-#ifdef _KINDLE_H_
+#ifndef _KINDLE_H_
 #define _KIDLE_H_
 
 #include <string>
@@ -8,14 +8,15 @@ class KindleUnlimeted
 {
 public:
 	KindleUnlimeted();
-	KindleUnlimeted(string);
+	KindleUnlimeted(string const);
 	//Método para fazer o download de um livro
-	void downloadBook(string);
-	void setBookName(string);
+	void downloadBook(string const);
+	void setBookName(string const);
 	string getBookName();
 
 private:
-	string bookName;	
+	string bookName;
+    string bookAutor
 };
 
 #endif
