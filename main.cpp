@@ -7,31 +7,6 @@ using std::endl;
 using std::getline;
 using std::string;
 
-/*
-class KindleUnlimeted
-{
-public:
-	//Método para fazer o download de um livro
-	void downloadBook()
-	{
-		cout << "Downloading " << bookName << "..." << endl;
-	}
-	//Método para definir o nome do livro
-	void setBookName(string book)
-	{
-		bookName = book;
-	}
-	//Método para retornar o nome do livro
-	string getBookName()
-	{
-		return bookName;
-	}
-
-private:
-		string bookName;	
-};
-*/
-
 int main ()
 {
 	string nameOfBook;
