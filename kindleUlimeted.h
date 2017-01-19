@@ -1,5 +1,5 @@
 #ifndef _KINDLE_H_
-#define _KIDLE_H_
+#define _KINDLE_H_
 
 #include <string>
 using std::string;
