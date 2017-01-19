@@ -9,6 +9,8 @@ using std::string;
 
 int main ()
 {
+	static int bookNumber = 0;
+
 	string nameOfBook;
 	KindleUnlimeted myKindle;
 	cout << "\nPor favor, entre com o nome do livro:" << endl;

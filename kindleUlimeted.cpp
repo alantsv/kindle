@@ -8,23 +8,32 @@ using std::endl;
 using std::getline;
 using std::string;
 
-
-	KindleUnlimeted::KindleUnlimeted(){
+	// Default Constructor
+	KindleUnlimeted::KindleUnlimeted()
+	{
 		this->bookName = "";
-        this->bookAutor = "";
+		this->bookAutor = "";
+		
+		bookNumber++;
 	}
-	
-	KindleUnlimeted::KindleUnlimeted(const string &book, const string &autor){
+	// Constructor
+	KindleUnlimeted::KindleUnlimeted(const string &book, const string &autor)
+	{
 		this->bookName = book;
-        this->bookAutor = autor
+        	this->bookAutor = autor
+
+		bookNumber++;
 	}
-    
-    KindleUnlimeted::KindleUnlimited(const KindleUnlimeted &kindle){
-        this->bookName = kindle.bookName;
-        this->bookAutor = kindle.bookAutor;
-    }
+	// Copy Constructor
+	KindleUnlimeted::KindleUnlimited(const KindleUnlimeted &kindle)
+	{
+		this->bookName = kindle.bookName;
+		this->bookAutor = kindle.bookAutor;
+
+		bookNumber++;
+	}
 	
-	//Método para fazer o download de um livro
+	// Método para fazer o download de um livro
 	void KindleUnlimeted::downloadBook(const string &bookName)
 	{
 		cout << "Downloading " << KidleUnlimeted.getBookName << "..." << endl;
