@@ -7,12 +7,17 @@ using std::string;
 class KindleUnlimeted
 {
 public:
+	// Default constructor
 	KindleUnlimeted();
+	// Constructot
 	KindleUnlimeted(const string &, const string &);
+	// Copy constructot
     	KindleUnlimeted(const KindleUnlimeted &);
-	//Método para fazer o download de um livro
+	// Faz o download de um livro
 	void downloadBook() const;
+	// Seleciona o nome do livro
 	void setBookName(string &, string &);
+	// Retorna o nome do livro
 	string getBookName() const;
 
 private:

@@ -17,7 +17,6 @@ int main ()
 	getline( cin, bookName);
 	getline( cin, autor);
 	myKindle.setBookName(bookName, autor);
-
 	myKindle.downloadBook();
 	return 0;
 
