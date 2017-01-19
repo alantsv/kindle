@@ -20,7 +20,7 @@ using std::string;
 	KindleUnlimeted::KindleUnlimeted(const string &book, const string &autor)
 	{
 		this->bookName = book;
-        	this->bookAutor = autor
+        	this->bookAutor = autor;
 
 		bookNumber++;
 	}
@@ -34,17 +34,18 @@ using std::string;
 	}
 	
 	// Método para fazer o download de um livro
-	void KindleUnlimeted::downloadBook(const string &bookName)
+	void KindleUnlimeted::downloadBook() const
 	{
 		cout << "Downloading " << KidleUnlimeted.getBookName << "..." << endl;
 	}
 	
-	void KindleUnlimeted::setBookName(string book)
+	void KindleUnlimeted::setBookName(string &book, string &autor)
 	{
 		bookName = book;
+		bookAutor = autor;
 	}
 	
-	string KindleUnlimeted::getBookName()
+	string KindleUnlimeted::getBookName() const
 	{
 		return bookName;
 	}

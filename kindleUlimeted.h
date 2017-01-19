@@ -9,10 +9,10 @@ class KindleUnlimeted
 public:
 	KindleUnlimeted();
 	KindleUnlimeted(const string &, const string &);
-    	kindleUnlimeted(KindleUnlimeted &);
+    	KindleUnlimeted(const KindleUnlimeted &);
 	//Método para fazer o download de um livro
-	void downloadBook(const string &, const string &) const;
-	void setBookName(string &);
+	void downloadBook() const;
+	void setBookName(string &, string &);
 	string getBookName() const;
 
 private:

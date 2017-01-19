@@ -10,14 +10,15 @@ using std::string;
 int main ()
 {
 	static int bookNumber = 0;
-
-	string nameOfBook;
+	string autor;
+	string bookName;
 	KindleUnlimeted myKindle;
 	cout << "\nPor favor, entre com o nome do livro:" << endl;
-	getline( cin, nameOfBook );
-	myKindle.setBookName(nameOfBook);
+	getline( cin, bookName);
+	getline( cin, autor);
+	myKindle.setBookName(bookName, autor);
 
-	myKindle.downloadBook(nameOfBook);
+	myKindle.downloadBook();
 	return 0;
 
 }
