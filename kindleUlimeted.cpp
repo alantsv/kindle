@@ -8,6 +8,7 @@ using std::endl;
 using std::getline;
 using std::string;
 
+static int bookNumber = 0;
 	// Default Constructor
 	KindleUnlimeted::KindleUnlimeted()
 	{
@@ -20,7 +21,7 @@ using std::string;
 	KindleUnlimeted::KindleUnlimeted(const string &book, const string &autor)
 	{
 		this->bookName = book;
-        	this->bookAutor = autor;
+        this->bookAutor = autor;
 
 		bookNumber++;
 	}

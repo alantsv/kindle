@@ -12,8 +12,10 @@ public:
 	// Constructot
 	KindleUnlimeted(const string &, const string &);
 	// Copy constructor
-    	KindleUnlimeted(const KindleUnlimeted &);
+    KindleUnlimeted(const KindleUnlimeted &);
 	// Faz o download de um livro
+    void buyBook(const string &);
+    
 	void downloadBook() const;
 	// Seleciona o nome do livro
 	void setBookName(string &, string &);
