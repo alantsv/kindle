@@ -12,18 +12,26 @@ public:
 	// Constructot
 	KindleUnlimeted(const string &, const string &);
 	// Copy constructor
-    	KindleUnlimeted(const KindleUnlimeted &);
-	// Faz o download de um livro
+    KindleUnlimeted(const KindleUnlimeted &);
+    // Add new user
+    void addUser(const User &);
+	// Buy one new book
+    void buyBook(const string &);
+    // Download one book
 	void downloadBook() const;
-	// Seleciona o nome do livro
+	// Set book name
 	void setBookName(string &, string &);
-	// Retorna o nome do livro
+	// Return book name
 	string getBookName() const;
 
 private:
 	string bookName;
  	string bookAutor;
+    static int userCount;
 	static int bookNumber;
+    const static int bookMaxNumber;
+    const Date signatureDate;
+    const User userID;
 };
 
 #endif
