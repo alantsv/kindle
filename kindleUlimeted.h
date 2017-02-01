@@ -1,12 +1,17 @@
 #ifndef _KINDLE_H_
 #define _KINDLE_H_
 
+#include <ostream>
 #include <string>
 using std::string;
+using std::ostream
 
 class KindleUnlimeted
+    friend ostream &operator<<(ostream &, const KindleUnlimeted &);
 {
 public:
+    // Assingement
+    const KindleUnlimeted &operator= (const KindleUnlimeted &);
 	// Default constructor
 	KindleUnlimeted();
 	// Constructot
@@ -27,11 +32,11 @@ public:
 private:
 	string bookName;
  	string bookAutor;
-    static int userCount;
+    int userCount;
 	static int bookNumber;
     const static int bookMaxNumber;
     const Date signatureDate;
-    const User userID;
+    User *users;
 };
 
 #endif
