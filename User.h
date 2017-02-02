@@ -4,11 +4,11 @@
 #include <ostream>
 #include <string>
 using std::string;
-using std::ostream
+using std::ostream;
 
 class User 
-    friend ostream &operator<<(ostream &, const User &);
 {
+    friend ostream &operator<<(ostream &, const User &);
 public:
     User();
     User(const User &);
