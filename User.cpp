@@ -19,3 +19,10 @@ User::User(const User &userCopy)
     this->age = userCopy.age;
     this->id = userCopy.id;
 }
+
+User::User(const string &nameUser, const int ageUser, const int idUser)
+{
+	this->name = nameUser;
+    this->age = ageUser;
+    this->id = idUser;
+}

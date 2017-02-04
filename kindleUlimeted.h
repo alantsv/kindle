@@ -10,26 +10,30 @@ using std::ostream;
 
 class KindleUnlimeted
 {
+	//Defined operator output
 	friend ostream &operator<<(ostream &, const KindleUnlimeted &);
 public:
-	// Assingement
+	// Defined operator assigment
 	const KindleUnlimeted &operator= (const KindleUnlimeted &);
 	// Default constructor
 	KindleUnlimeted();
-	// Constructot
-	KindleUnlimeted(const string &, const string &);
+	// Constructor
+	KindleUnlimeted(const string &, const string &, const int, const Data &);
 	// Copy constructor
 	KindleUnlimeted(const KindleUnlimeted &);
+	// Destructor
+	~KindleUnlimeted();
 	// Add new user
 	void addUser(const User &);
 	// Buy one new book
 	void buyBook(const string &);
-	// Download one book
-	void downloadBook() const;
 	// Set book name
 	void setBookName(string &, string &);
 	// Return book name
 	string getBookName() const;
+	// Download one book
+	void downloadBook() const;
+
 
 private:
 	string bookName;

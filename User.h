@@ -8,14 +8,15 @@ using std::ostream;
 
 class User 
 {
-    friend ostream &operator<<(ostream &, const User &);
+	friend ostream &operator<<(ostream &, const User &);
 public:
-    User();
-    User(const User &);
+	User();
+	User(const User &);
+	User(const string &, const int, const int);
 private:
-    string name;
-    int age;
-    int id;    
+	string name;
+	int age;
+	int id;	
 };
 
 #endif	/* USER_H */
