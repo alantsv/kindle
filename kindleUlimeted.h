@@ -13,12 +13,19 @@ class KindleUnlimeted
 	//Defined operator output
 	friend ostream &operator<<(ostream &, const KindleUnlimeted &);
 public:
-	// Defined operator assigment
+	// Defined operator ==
+	bool operator== (const KindleUnlimeted &) const;
+	// Defined operator !=
+	bool operator!= (const KindleUnlimeted &kindle) const
+	{
+		return ! (*this == kindle);
+	}
+	// Defined assigment operator
 	const KindleUnlimeted &operator= (const KindleUnlimeted &);
 	// Default constructor
 	KindleUnlimeted();
 	// Constructor
-	KindleUnlimeted(const string &, const string &, const int, const Data &);
+	KindleUnlimeted(const string &, const string &, const Data &, const User &);
 	// Copy constructor
 	KindleUnlimeted(const KindleUnlimeted &);
 	// Destructor
@@ -28,19 +35,25 @@ public:
 	// Buy one new book
 	void buyBook(const string &);
 	// Set book name
-	void setBookName(string &, string &);
+	void setBookName(string &);
+	// Set author name
+	void setAuthorName(string &);
 	// Return book name
 	string getBookName() const;
+	// Return author name
+	string getAuthorName() const;
 	// Download one book
 	void downloadBook() const;
+	// Search user
+	static int showKindleNumber();
 
 
 private:
 	string bookName;
  	string bookAuthor;
+	const static int bookMaxNumberMonth;
 	int userCount;
 	static int kindleNumber;
-	const static int bookMaxNumber;
 	const Data signatureDate;
 	User *users;
 };

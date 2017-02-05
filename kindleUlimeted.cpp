@@ -9,14 +9,35 @@ using std::endl;
 using std::getline;
 using std::string;
 
-static int kindleNumber = 0;
-const int bookMaxNumber = 0;
+int KindleUnlimeted::kindleNumber = 0;
+const int bookMaxNumberMonth = 50;
 
 // Overload opperator <<
 ostream &operator<< (ostream &output, const KindleUnlimeted &kindle)
 {
-	output << "Book: "<< kindle.bookName << " Author: " << kindle.bookAuthor;
+	output << "Book: "<< kindle.bookName << "\nAuthor: " << kindle.bookAuthor << "\nSignature Date: " << kindle.signatureDate << "User count:" << kindle.userCount << endl;
+	for(int i = 0; i < kindle.userCount; i++)
+		output << kindle.users[i] << endl;
 	return output;
+}
+
+
+// Overload operator ==
+bool KindleUnlimeted::operator== (const KindleUnlimeted &kindle) const
+{
+	if (this->bookName == kindle.bookName)
+		return false;
+	if (this->bookAuthor == kindle.bookAuthor)
+		return false;
+	if (this->userCount == kindle.userCount)
+		return false;
+	if (this->signatureDate == kindle.signatureDate)
+		return false;
+	for(int i = 0; i < kindle.userCount; i++)
+		if (this->users[i] == kindle.users[i])
+			return false;
+	
+	return true;
 }
 
 // Overload operator =
@@ -24,7 +45,7 @@ const KindleUnlimeted &KindleUnlimeted::operator= (const KindleUnlimeted &kindle
 {
 	this->bookName = kindle.bookName;
 	this->bookAuthor = kindle.bookAuthor;
-	this->bookName = kindle.bookName;
+	this->userCount = kindle.userCount;
 	delete [] users;
 	this->users= new User[kindle.userCount];
 	
@@ -39,22 +60,22 @@ KindleUnlimeted::KindleUnlimeted()
 {
 	this->bookName = "";
 	this->bookAuthor = "";
-	this->userCount = 0;
-	this->users = 0;
+	this->userCount = 1;
+	this->users;
+	this->signatureDate;
 	
 	kindleNumber++;
 }
 
 // Constructor
-KindleUnlimeted::KindleUnlimeted(const string &book, const string &author, int cout, const Data &date)
+KindleUnlimeted::KindleUnlimeted(const string &book, const string &author, const Data &date, const User &user)
 :signatureDate(date)
 {
 	this->bookName = book;
 	this->bookAuthor = author;
-	this->userCount = cout;
-	this->signatureDate;
+	this->userCount = 1;
+	this->users[0] = user;
 
-	kindleNumber++;
 }
 
 // Copy Constructor
@@ -75,18 +96,23 @@ KindleUnlimeted::KindleUnlimeted(const KindleUnlimeted &kindle)
 // Destructor
 KindleUnlimeted::~KindleUnlimeted()
 {
-	cout << "~KindleUnlimeted() called for" << bookName << "" << bookAuthor << endl;
+	cout << "~KindleUnlimeted() called" << endl;
 	
-	delete []  users;
+	delete [] users;
 	
 	kindleNumber--;
 
 }
 
 // Set book name
-void KindleUnlimeted::setBookName(string &book, string &author)
+void KindleUnlimeted::setBookName(string &book)
 {
 	bookName = book;
+}
+
+// Set author name
+void KindleUnlimeted::setAuthorName(string &author)
+{
 	bookAuthor = author;
 }
 
@@ -94,6 +120,12 @@ void KindleUnlimeted::setBookName(string &book, string &author)
 string KindleUnlimeted::getBookName() const
 {
 	return bookName;
+}
+
+// Rerturn author name
+string KindleUnlimeted::getAuthorName() const
+{
+	return bookAuthor;
 }
 
 // Download one book
@@ -125,4 +157,8 @@ void KindleUnlimeted::addUser (const User &newUser)
 }
 
 
+int KindleUnlimeted::showKindleNumber()
+{
+	return kindleNumber;
+}
 
