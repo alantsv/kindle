@@ -50,6 +50,8 @@ public:
 	static int showKindleNumber();
 	// Show recommended book list
 	static void showRecommended();
+	// Setup developer list
+	void setupDeveloperList(int);
 
 
 private:
@@ -61,6 +63,8 @@ private:
 	const Data signatureDate;
 	User *users;
 	static string recommendBook[5];
+	string *developerList;
+	int developerCout;
 };
 
 #endif

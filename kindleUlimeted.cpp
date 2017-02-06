@@ -13,11 +13,12 @@ int KindleUnlimeted::kindleNumber = 0;
 const int bookMaxNumberMonth = 50;
 string KindleUnlimeted::recommendBook[5] = {"Eragon", "The Godfather", "UML", "Linux é vida", "Think Python"};
 
+
 // Overload opperator <<
 ostream &operator<< (ostream &output, const KindleUnlimeted &kindle)
 {
 	output << "Book: "<< kindle.bookName << "\nAuthor: " << kindle.bookAuthor << "\nSignature Date: " << kindle.signatureDate << "User count: " << kindle.userCount << endl;
-	for(int i = 0; i < kindle.userCount; i++)
+	for (int i = 0; i < kindle.userCount; i++)
 		output << kindle.users[i] << endl;
 	return output;
 }
@@ -101,6 +102,7 @@ KindleUnlimeted::~KindleUnlimeted()
 	cout << "~KindleUnlimeted() called" << endl;
 	
 	delete [] users;
+	delete [] developerList;
 	
 	kindleNumber--;
 
@@ -176,4 +178,17 @@ void KindleUnlimeted::showRecommended()
 	cout << "<<<< Recommended >>>>" << endl;
 	for(int i = 0; i < 5; i++)
 		cout << recommendBook[i] << endl;
+}
+
+// Setup Developer List
+void KindleUnlimeted::setupDeveloperList(int size) 
+{
+	if (size < 1) {
+		size = 0;
+	}
+
+	developerList = new string[size];
+	developerCout = size;
+
+	cout << "Started KindleUnlimed object with " << size << " developer" << endl;
 }
