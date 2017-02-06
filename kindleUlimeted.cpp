@@ -15,7 +15,7 @@ const int bookMaxNumberMonth = 50;
 // Overload opperator <<
 ostream &operator<< (ostream &output, const KindleUnlimeted &kindle)
 {
-	output << "Book: "<< kindle.bookName << "\nAuthor: " << kindle.bookAuthor << "\nSignature Date: " << kindle.signatureDate << "User count:" << kindle.userCount << endl;
+	output << "Book: "<< kindle.bookName << "\nAuthor: " << kindle.bookAuthor << "\nSignature Date: " << kindle.signatureDate << "User count: " << kindle.userCount << endl;
 	for(int i = 0; i < kindle.userCount; i++)
 		output << kindle.users[i] << endl;
 	return output;
@@ -61,8 +61,9 @@ KindleUnlimeted::KindleUnlimeted()
 	this->bookName = "";
 	this->bookAuthor = "";
 	this->userCount = 1;
-	this->users;
+	this->users = new User[this->userCount];
 	this->signatureDate;
+	this->users;
 	
 	kindleNumber++;
 }
@@ -74,6 +75,7 @@ KindleUnlimeted::KindleUnlimeted(const string &book, const string &author, const
 	this->bookName = book;
 	this->bookAuthor = author;
 	this->userCount = 1;
+	this->users = new User[this->userCount];
 	this->users[0] = user;
 
 }
