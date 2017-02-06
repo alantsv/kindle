@@ -11,6 +11,7 @@ using std::string;
 
 int KindleUnlimeted::kindleNumber = 0;
 const int bookMaxNumberMonth = 50;
+string KindleUnlimeted::recommendBook[5] = {"Eragon", "The Godfather", "UML", "Linux é vida", "Think Python"};
 
 // Overload opperator <<
 ostream &operator<< (ostream &output, const KindleUnlimeted &kindle)
@@ -20,7 +21,6 @@ ostream &operator<< (ostream &output, const KindleUnlimeted &kindle)
 		output << kindle.users[i] << endl;
 	return output;
 }
-
 
 // Overload operator ==
 bool KindleUnlimeted::operator== (const KindleUnlimeted &kindle) const
@@ -133,7 +133,13 @@ string KindleUnlimeted::getAuthorName() const
 // Download one book
 void KindleUnlimeted::downloadBook() const
 {
-	cout << "Downloading " << bookName << "..." << endl;
+	cout << "Downloading " << this->bookName << "..." << endl;
+}
+
+// Show user cout
+void KindleUnlimeted::showUserCount() const
+{
+	cout << "Users:" << this->userCount << endl;
 }
 
 // Add user
@@ -158,9 +164,16 @@ void KindleUnlimeted::addUser (const User &newUser)
 	userCount++;
 }
 
-
+// Show the KindleUnlimeted number
 int KindleUnlimeted::showKindleNumber()
 {
 	return kindleNumber;
 }
 
+// Show 5 recommended books
+void KindleUnlimeted::showRecommended()
+{
+	cout << "<<<< Recommended >>>>" << endl;
+	for(int i = 0; i < 5; i++)
+		cout << recommendBook[i] << endl;
+}

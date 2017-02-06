@@ -44,8 +44,12 @@ public:
 	string getAuthorName() const;
 	// Download one book
 	void downloadBook() const;
-	// Search user
+	// Show user
+	void showUserCount() const;
+	// Show kindle unlimeted number
 	static int showKindleNumber();
+	// Show recommended book list
+	static void showRecommended();
 
 
 private:
@@ -56,6 +60,7 @@ private:
 	static int kindleNumber;
 	const Data signatureDate;
 	User *users;
+	static string recommendBook[5];
 };
 
 #endif
