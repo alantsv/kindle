@@ -8,7 +8,7 @@ using std::getline;
 using std::string;
 /*
    *Uma nova classe relacionada ao seu projeto
-    Duas alocações dinâmicas de memória - uma similar ao do exemplo do livro - slide 85
+    *Duas alocações dinâmicas de memória - uma similar ao do exemplo do livro - slide 85
     *Uso explicito do ponteiro this
     *Uso do destrutor
     *Sobrecarga dos operadores em todas as classes
