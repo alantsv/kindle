@@ -1,6 +1,6 @@
 #include <iostream>
 #include <string>
-#include "kindleUlimeted.h"
+#include "KindleUlimited.h"
 using std::cout;
 using std::cin;
 using std::endl;
@@ -11,8 +11,8 @@ int main ()
 {
 	string author;
 	string bookName;
-	KindleUnlimeted myKindle;
-	KindleUnlimeted::showRecommended();
+	KindleUnlimited myKindle;
+	KindleUnlimited::showRecommended();
 	cout << endl;
 	cout << "Plase, book name: ";
 	getline( cin, bookName);
@@ -25,7 +25,7 @@ int main ()
 	myKindle.downloadBook();
 	cout << endl;
 	cout << myKindle << endl;
-	cout << "Kindle number: " << KindleUnlimeted::showKindleNumber << endl;
+	cout << "Kindle number: " << KindleUnlimited::showKindleNumber << endl;
 	cout << endl;
 	cout << endl;
 	return 0;

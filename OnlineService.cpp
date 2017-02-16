@@ -36,12 +36,12 @@ OnlineService::OnlineService(const OnlineService &onlineService)
 :registerDate(onlineService.registerDate)
 {
 	this->userCount = onlineService.userCount;
-	delete [] users;
+
 	this->users = new User[onlineService.userCount];
 	for (int i = 0; i < onlineService.userCount; i++)
 		this->users[i] = onlineService.users[i];
 	this->developerCount = onlineService.developerCount;
-//	delete [] developerList;
+
 	this->developerList = new string[onlineService.developerCount];
 	for (int i = 0; i < onlineService.developerCount; i++)
 		this->developerList[i] = onlineService.developerList[i];
