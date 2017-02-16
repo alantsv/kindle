@@ -3,16 +3,24 @@
 
 #include <ostream>
 #include <string>
-#include "User.h"
 #include "Data.h"
+#include "OnlineService.h"
 using std::string;
 using std::ostream;
 
-class KindleUnlimeted
+class KindleUnlimeted : public OnlineService
 {
 	//Defined operator output
 	friend ostream &operator<<(ostream &, const KindleUnlimeted &);
 public:
+	// Default constructor
+	KindleUnlimeted();
+	// Constructor
+	KindleUnlimeted(const string &, const string &, const Data &, const Data & ,const User &, const string &);
+	// Copy constructor
+	KindleUnlimeted(const KindleUnlimeted &);
+	// Destructor
+	~KindleUnlimeted();
 	// Defined operator ==
 	bool operator== (const KindleUnlimeted &) const;
 	// Defined operator !=
@@ -22,16 +30,6 @@ public:
 	}
 	// Defined assigment operator
 	const KindleUnlimeted &operator= (const KindleUnlimeted &);
-	// Default constructor
-	KindleUnlimeted();
-	// Constructor
-	KindleUnlimeted(const string &, const string &, const Data &, const User &);
-	// Copy constructor
-	KindleUnlimeted(const KindleUnlimeted &);
-	// Destructor
-	~KindleUnlimeted();
-	// Add new user
-	void addUser(const User &);
 	// Buy one new book
 	void buyBook(const string &);
 	// Set book name
@@ -44,27 +42,18 @@ public:
 	string getAuthorName() const;
 	// Download one book
 	void downloadBook() const;
-	// Show user
-	void showUserCount() const;
 	// Show kindle unlimeted number
 	static int showKindleNumber();
 	// Show recommended book list
 	static void showRecommended();
-	// Setup developer list
-	void setupDeveloperList(int);
-
 
 private:
 	string bookName;
  	string bookAuthor;
 	const static int bookMaxNumberMonth;
-	int userCount;
 	static int kindleNumber;
-	const Data signatureDate;
-	User *users;
 	static string recommendBook[5];
-	string *developerList;
-	int developerCout;
+	Data signatureDate;
 };
 
 #endif

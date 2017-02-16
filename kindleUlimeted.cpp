@@ -2,7 +2,7 @@
 #include <string>
 #include "kindleUlimeted.h"
 #include "Data.h"
-#include "User.h"
+#include "OnlineService.h"
 using std::cout;
 using std::cin;
 using std::endl;
@@ -15,41 +15,32 @@ string KindleUnlimeted::recommendBook[5] = {"Eragon", "The Godfather", "UML", "L
 
 // Default Constructor
 KindleUnlimeted::KindleUnlimeted()
-:signatureDate()
+:signatureDate(), OnlineService()
 {
 	this->bookName = "";
 	this->bookAuthor = "";
-	this->userCount = 1;
-	this->users = new User[this->userCount];
-
 	
 	kindleNumber++;
 }
 
 // Constructor
-KindleUnlimeted::KindleUnlimeted(const string &book, const string &author, const Data &date, const User &user)
-:signatureDate(date)
+KindleUnlimeted::KindleUnlimeted(const string &book, const string &author, const Data &regist,const Data &date, const User &user, const string &developer)
+:signatureDate(date), OnlineService(user, developer, regist)
 {
 	this->bookName = book;
 	this->bookAuthor = author;
-	this->userCount = 1;
-	this->users = new User[this->userCount];
-	this->users[0] = user;
+
+	kindleNumber++;
 
 }
 
 // Copy Constructor
 KindleUnlimeted::KindleUnlimeted(const KindleUnlimeted &kindle)
-:signatureDate(kindle.signatureDate)
+:signatureDate(kindle.signatureDate), OnlineService(static_cast< OnlineService > (kindle))
 {
 	this->bookName = kindle.bookName;
 	this->bookAuthor = kindle.bookAuthor;
-	this->userCount = kindle.userCount;
-	delete [] users;
-	this->users = new User[kindle.userCount];
 	
-	for (int i = 0; i < kindle.userCount; i++)
-		this->users[i] = kindle.users[i];
 	kindleNumber++;
 }
 
@@ -58,36 +49,31 @@ KindleUnlimeted::~KindleUnlimeted()
 {
 	cout << "~KindleUnlimeted() called" << endl;
 	
-	delete [] users;
-	delete [] developerList;
-	
 	kindleNumber--;
 }
 
 // Overload opperator <<
 ostream &operator<< (ostream &output, const KindleUnlimeted &kindle)
 {
-	output << "Book: "<< kindle.bookName << "\nAuthor: " << kindle.bookAuthor << "\nSignature Date: " << kindle.signatureDate << "User count: " << kindle.userCount << endl;
-	for (int i = 0; i < kindle.userCount; i++)
-		output << kindle.users[i] << endl;
+	output << "\nSignature Date: " << kindle.signatureDate << endl;
+	output << "Book: " << kindle.bookName << "\nAuthor: " << kindle.bookAuthor << endl;
+	cout << endl;
+	output << static_cast< OnlineService > (kindle) << endl;
+
 	return output;
 }
 
 // Overload operator ==
 bool KindleUnlimeted::operator== (const KindleUnlimeted &kindle) const
 {
-	if (this->bookName == kindle.bookName)
+	if (this->bookName != kindle.bookName)
 		return false;
-	if (this->bookAuthor == kindle.bookAuthor)
+	if (this->bookAuthor != kindle.bookAuthor)
 		return false;
-	if (this->userCount == kindle.userCount)
+	if (this->signatureDate != kindle.signatureDate)
 		return false;
-	if (this->signatureDate == kindle.signatureDate)
+	if (static_cast< OnlineService >(*this) != static_cast<OnlineService> (kindle))	
 		return false;
-	for(int i = 0; i < kindle.userCount; i++)
-		if (this->users[i] == kindle.users[i])
-			return false;
-	
 	return true;
 }
 
@@ -96,13 +82,10 @@ const KindleUnlimeted &KindleUnlimeted::operator= (const KindleUnlimeted &kindle
 {
 	this->bookName = kindle.bookName;
 	this->bookAuthor = kindle.bookAuthor;
-	this->userCount = kindle.userCount;
-	delete [] users;
-	this->users= new User[kindle.userCount];
+	this->signatureDate = kindle.signatureDate;
 	
-	for(int i = 0; i < kindle.userCount; i++)
-		this->users[i] = kindle.users[i];
-	
+	static_cast< OnlineService> (*this) = static_cast< OnlineService > (kindle);
+		
 	return *this;
 }
 
@@ -136,34 +119,6 @@ void KindleUnlimeted::downloadBook() const
 	cout << "Downloading " << this->bookName << "..." << endl;
 }
 
-// Show user cout
-void KindleUnlimeted::showUserCount() const
-{
-	cout << "Users:" << this->userCount << endl;
-}
-
-// Add user
-void KindleUnlimeted::addUser (const User &newUser)
-{
-	User *aux = new User[userCount];
-	
-	for(int i = 0; i < userCount; i++)
-		aux[i] = this->users[i];
-		
-	delete [] this->users;
-	
-	users = new User[++userCount];
-	
-	for(int i = 0; i < userCount-1; i++)
-		users[i] = aux[i];
-		
-	users[userCount-1] = newUser;
-	
-	delete [] aux;
-	
-	userCount++;
-}
-
 // Show the KindleUnlimeted number
 int KindleUnlimeted::showKindleNumber()
 {
@@ -176,17 +131,4 @@ void KindleUnlimeted::showRecommended()
 	cout << "<<<< Recommended >>>>" << endl;
 	for(int i = 0; i < 5; i++)
 		cout << recommendBook[i] << endl;
-}
-
-// Setup Developer List
-void KindleUnlimeted::setupDeveloperList(int size) 
-{
-	if (size < 1) {
-		size = 0;
-	}
-
-	developerList = new string[size];
-	developerCout = size;
-
-	cout << "Started KindleUnlimed object with " << size << " developer" << endl;
 }
