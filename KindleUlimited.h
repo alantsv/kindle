@@ -17,7 +17,7 @@ public:
 	// Default constructor
 	KindleUnlimited();
 	// Constructor
-	KindleUnlimited(const string &, const string &, const Data &, const Data & ,const User &, const string &);
+	KindleUnlimited(const string &, const string &, const Data &, const Data & ,const User &, const string &, bool, int count, const string &);
 	// Copy constructor
 	KindleUnlimited(const KindleUnlimited &);
 	// Destructor

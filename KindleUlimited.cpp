@@ -16,17 +16,21 @@ KindleUnlimited::KindleUnlimited()
 :signatureDate(), Kindle()
 {
 	this->signature = true;
-	this->preferenceCount = 1;
-	this->genrePreferenceList = new string[preferenceCount];
+	this->preferenceCount = 0;
+	this->genrePreferenceList = new string[1];
 }
 
 // Constructor
-KindleUnlimited::KindleUnlimited(const string &book, const string &author, const Data &regist,const Data &date, const User &user, const string &developer)
+KindleUnlimited::KindleUnlimited(const string &book, const string &author, const Data &regist,const Data &date, const User &user, const string &developer, bool sign, int count, const string &genre)
 :signatureDate(date), Kindle(book, author,regist, user,developer)
 {
 	this->signature = true;
-	this->preferenceCount = 1;
+	if (1 > count)
+		count = 1;
+	this->preferenceCount = count;
 	this->genrePreferenceList = new string[preferenceCount];
+	this->genrePreferenceList[0] = genre;
+	
 }
 
 // Copy Constructor
@@ -35,7 +39,7 @@ KindleUnlimited::KindleUnlimited(const KindleUnlimited &kindle)
 {
 	this->signature = kindle.signature;
 	this->preferenceCount = kindle.preferenceCount;
-	delete [] this->genrePreferenceList;
+	this->genrePreferenceList = new string[this->preferenceCount];
 	for(int i = 0; i < kindle.preferenceCount; i++)
 		this->genrePreferenceList[i] = kindle.genrePreferenceList[i];
 }
@@ -50,7 +54,11 @@ KindleUnlimited::~KindleUnlimited()
 // Overload opperator <<
 ostream &operator<< (ostream &output, const KindleUnlimited &kindle)
 {
-	output << "\nSignature Date: " << kindle.signatureDate << endl;
+	output << "\nSignature Date: " << kindle.signatureDate << endl; 
+	output << "\nPreference Count: " << kindle.preferenceCount << endl;
+	cout << "\nGenre Preference List: " << endl;
+	for(int i = 0; i < kindle.preferenceCount; i++)
+		output << kindle.genrePreferenceList[i] << endl;
 	output << static_cast< Kindle> (kindle) << endl;
 	return output;
 }
@@ -60,6 +68,11 @@ bool KindleUnlimited::operator== (const KindleUnlimited &kindle) const
 {
 	if (this->signatureDate != kindle.signatureDate)
 		return false;
+	if (this->preferenceCount != kindle.preferenceCount)
+		return false;
+	for(int i = 0; i < kindle.preferenceCount; i++)
+		if (this->genrePreferenceList[i] != kindle.genrePreferenceList[i])
+			return false;
 	if (static_cast< Kindle >(*this) != static_cast<Kindle> (kindle))	
 		return false;
 	return true;
@@ -69,6 +82,11 @@ bool KindleUnlimited::operator== (const KindleUnlimited &kindle) const
 const KindleUnlimited &KindleUnlimited::operator= (const KindleUnlimited &kindle)
 {
 	this->signatureDate = kindle.signatureDate;
+	this->preferenceCount = kindle.preferenceCount;
+	delete [] this->genrePreferenceList;
+	this->genrePreferenceList = new string[this->preferenceCount];
+	for(int i = 0; i < kindle.preferenceCount; i++)
+		this->genrePreferenceList[i] = kindle.genrePreferenceList[i];
 	
 	static_cast< Kindle> (*this) = static_cast< Kindle > (kindle);
 }
@@ -79,6 +97,8 @@ void KindleUnlimited::readEBook(const string &ebook) const
 	cout << "Opening " << ebook << "..." << endl;
 }
 
+
+// Add genre to preference list
 void KindleUnlimited::setupPreferenceList(const string &newGenre)
 {
 	string *aux = new string[preferenceCount];
@@ -100,16 +120,19 @@ void KindleUnlimited::setupPreferenceList(const string &newGenre)
 	this->preferenceCount++;
 }
 
+// Exit all devices
 void KindleUnlimited::exitAllDevice() const
 {
 	cout << "Exit all devices" << endl;
 }
 
+// Show max number user shared same account
 int KindleUnlimited::showMaxUserShared()
 {
 	return maxUserShared;
 }
 
+// Print cost of assigment for month
 double KindleUnlimited::printCostMonth()
 {
 	return costForMonth;
