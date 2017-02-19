@@ -48,6 +48,7 @@ KindleUnlimited::KindleUnlimited(const KindleUnlimited &kindle)
 KindleUnlimited::~KindleUnlimited()
 {
 	cout << "~KindleUnlimited() called" << endl;
+	delete [] genrePreferenceList;
 	
 }
 
