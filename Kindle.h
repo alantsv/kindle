@@ -21,7 +21,7 @@ public:
 	// Copy constructor
 	Kindle(const Kindle &);
 	// Destructor
-	~Kindle();
+	virtual ~Kindle();
 	// Defined operator ==
 	bool operator== (const Kindle &) const;
 	// Defined operator !=

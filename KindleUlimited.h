@@ -46,6 +46,7 @@ public:
 	static int showMaxUserShared();
 	// Print o cost for month
 	static double printCostMonth();
+	double returnTotalCost() const;
 private:
 	const static int maxUserShared = 5;
 	Data signatureDate;

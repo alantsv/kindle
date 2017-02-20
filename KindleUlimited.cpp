@@ -3,6 +3,7 @@
 #include "KindleUlimited.h"
 #include "Data.h"
 #include "Kindle.h"
+#include "OnlineService.h"
 using std::cout;
 using std::cin;
 using std::endl;
@@ -137,4 +138,9 @@ int KindleUnlimited::showMaxUserShared()
 double KindleUnlimited::printCostMonth()
 {
 	return costForMonth;
+}
+// Return total cost for month
+double KindleUnlimited::returnTotalCost() const
+{
+	return costForMonth * showUserCount();
 }

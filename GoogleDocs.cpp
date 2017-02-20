@@ -99,3 +99,10 @@ const GoogleDocs &GoogleDocs::operator= (const GoogleDocs &googleDocs)
 	static_cast< OnlineService> (*this) = static_cast< OnlineService > (googleDocs);
 	return *this;
 }
+
+// Show last acess date
+void GoogleDocs::showDate() const
+{
+	cout << "Last acess date: "<< endl;
+	cout << this->lastAcess << endl;
+}

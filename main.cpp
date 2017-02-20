@@ -1,6 +1,8 @@
 #include <iostream>
 #include <string>
 #include "KindleUlimited.h"
+#include "OnlineService.h"
+#include "GoogleDocs.h"
 using std::cout;
 using std::cin;
 using std::endl;
@@ -9,6 +11,9 @@ using std::string;
 
 int main ()
 {
+	OnlineService *Derivada = new GoogleDocs();
+	delete Derivada;
+	OnlineService *Derivada = new Kindle();
 	string author;
 	string bookName;
 	KindleUnlimited myKindle;
@@ -26,6 +31,7 @@ int main ()
 	cout << endl;
 	cout << myKindle << endl;
 	cout << "Kindle number: " << KindleUnlimited::showKindleNumber << endl;
+	cout << "Total cost: " << myKindle.returnTotalCost() << endl;
 	cout << endl;
 	cout << endl;
 	return 0;

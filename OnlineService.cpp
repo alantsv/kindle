@@ -110,9 +110,9 @@ const OnlineService &OnlineService::operator= (const OnlineService &onlineServic
 }
 
 // Show user cout
-void OnlineService::showUserCount() const
+int OnlineService::showUserCount() const
 {
-	cout << "Users: " << this->userCount << endl;
+ 	return this->userCount;
 }
 
 // Add user
@@ -149,4 +149,10 @@ void OnlineService::setupDeveloperList(int size)
 	this->developerCount = size;
 
 	cout << "Setuped OnlineService object with " << size << " developer" << endl;
+}
+
+// Show register date
+void OnlineService::showDate() const
+{
+	cout << "Register Date: " << this->registerDate << endl;
 }

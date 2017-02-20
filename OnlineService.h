@@ -20,7 +20,7 @@ public:
 	// Copy constructor
 	OnlineService(const OnlineService &);
 	// Destructor
-	~OnlineService();
+	virtual ~OnlineService();
 	// Defined operator ==
 	bool operator== (const OnlineService &) const;
 	// Defined operator !=
@@ -33,9 +33,11 @@ public:
 	// Add new user
 	void addUser(const User &);
 	// Show user
-	void showUserCount() const;
+	int showUserCount() const;
 	// Setup developer list
 	void setupDeveloperList(int);
+	// Show register date
+	virtual void showDate() const;
 
 private:
 	int userCount;

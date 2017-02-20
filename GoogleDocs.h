@@ -39,6 +39,8 @@ public:
 	{
 		this->editing =  !(this->editing);
 	}
+	// Show last acessa date
+	void showDate() const;
 
 private:
 	string documentName;
