@@ -42,6 +42,9 @@ int main ()
 	cout << "Total cost: " << myKindle.returnTotalCost() << endl;
 	cout << endl;
 	cout << endl;
+	myKindle.showDate();
+	cout << endl;
+	cout << endl;
 	return 0;
 
 }
