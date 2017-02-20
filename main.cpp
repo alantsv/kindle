@@ -11,9 +11,17 @@ using std::string;
 
 int main ()
 {
+	cout << "--------GoogleDocs------" << endl;
 	OnlineService *Derivada = new GoogleDocs();
 	delete Derivada;
-	OnlineService *Derivada = new Kindle();
+	cout << "--------Kindle------" << endl;
+	Derivada = new Kindle();
+	delete Derivada;
+	
+	cout << endl;
+	cout << endl;
+	cout << endl;
+	
 	string author;
 	string bookName;
 	KindleUnlimited myKindle;

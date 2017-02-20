@@ -48,7 +48,7 @@ OnlineService::OnlineService(const OnlineService &onlineService)
 }
 
 // Destructor
-OnlineService::~OnlineService()
+OnlineService::~OnlineService() 
 {
 	cout << "~OnlineService() called" << endl;
 	
