@@ -30,10 +30,6 @@ public:
 	}
 	// Defined assigment operator
 	const GoogleDocs &operator= (const GoogleDocs &);
-	// Open document
-	void openDocumnet(const string &);
-	// Add one document to document list
-	void addDocList(const string &);
 	// Enable or Disable editing
 	void setupEditing()
 	{
