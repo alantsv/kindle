@@ -3,7 +3,6 @@
 
 #include <ostream>
 #include <string>
-#include "Data.h"
 #include "OnlineService.h"
 using std::string;
 using std::ostream;
@@ -16,7 +15,7 @@ public:
 	// Default constructor
 	GoogleDocs();
 	// Constructor
-	GoogleDocs(const string &, bool, const Data &, const User &, const string &, const Data &);
+	GoogleDocs(const string &, bool, const User &, const string &, const Data &);
 	// Copy constructor
 	GoogleDocs(const GoogleDocs &);
 	// Destructor
@@ -31,7 +30,7 @@ public:
 	// Defined assigment operator
 	const GoogleDocs &operator= (const GoogleDocs &);
 	// Open document
-	void openDocumnet(const string &);
+	void openDocument(const string &);
 	// Add one document to document list
 	void addDocList(const string &);
 	// Enable or Disable editing
@@ -39,12 +38,12 @@ public:
 	{
 		this->editing =  !(this->editing);
 	}
-
+	// Print (Polymorphism)
+	void print() const;
 private:
 	string documentName;
 	int docOpenCount;
 	bool editing;
-	string *listDocumentOpen;
-	Data lastAcess;
+	string *openDocumentList;
 };
 #endif

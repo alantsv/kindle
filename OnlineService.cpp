@@ -50,7 +50,7 @@ OnlineService::OnlineService(const OnlineService &onlineService)
 // Destructor
 OnlineService::~OnlineService()
 {
-	cout << "~OnlineService() called" << endl;
+//	cout << "~OnlineService() called" << endl;
 	
 	delete [] users;
 	delete [] developerList;
@@ -59,14 +59,14 @@ OnlineService::~OnlineService()
 // Overload opperator <<
 ostream &operator<< (ostream &output, const OnlineService &onlineService)
 {
-	output << "Register Date: " << onlineService.registerDate << "User count: " << onlineService.developerCount << endl;
-	output << "Users:" << endl;
+	output << "You are registered since " << onlineService.registerDate << "Used for " << onlineService.developerCount << " users"<< endl;
+	output << "[Users info]" << endl;
 	for (int i = 0; i < onlineService.userCount; i++)
 		output << onlineService.users[i] << endl;
-	output << "Developer:" << endl;
+	output << "Developed for ";
 	for (int i = 0; i < onlineService.developerCount; i++)
-		output << "[" << i+1 << "] " << onlineService.developerList[i] << endl;
-
+		output << onlineService.developerList[i] << "";
+	cout << endl;
 	return output;
 }
 
@@ -109,44 +109,5 @@ const OnlineService &OnlineService::operator= (const OnlineService &onlineServic
 	return *this;
 }
 
-// Show user cout
-void OnlineService::showUserCount() const
-{
-	cout << "Users: " << this->userCount << endl;
-}
-
-// Add user
-void OnlineService::addUser (const User &newUser)
-{
-	User *aux = new User[userCount];
-	
-	for(int i = 0; i < userCount; i++)
-		aux[i] = this->users[i];
-		
-	delete [] this->users;
-	
-	users = new User[++userCount];
-	
-	for(int i = 0; i < userCount-1; i++)
-		users[i] = aux[i];
-		
-	users[userCount-1] = newUser;
-	
-	delete [] aux;
-	
-	userCount++;
-}
-
-// Setup Developer List
-void OnlineService::setupDeveloperList(int size) 
-{
-	if (size < 1) {
-		size = 0;
-	}
-
-	delete [] this->developerList;
-	this->developerList = new string[size];
-	this->developerCount = size;
-
-	cout << "Setuped OnlineService object with " << size << " developer" << endl;
-}
+void OnlineService::print() const
+{}

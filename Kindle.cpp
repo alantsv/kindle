@@ -18,20 +18,17 @@ Kindle::Kindle()
 :OnlineService()
 {
 	this->bookName = "";
-	this->bookAuthor = "";
 	
 	kindleNumber++;
 }
 
 // Constructor
-Kindle::Kindle(const string &book, const string &author, const Data &registe, const User &user, const string &developer)
+Kindle::Kindle(const string &book, const Data &registe, const User &user, const string &developer)
 :OnlineService(user, developer, registe)
 {
 	this->bookName = book;
-	this->bookAuthor = author;
 
 	kindleNumber++;
-
 }
 
 // Copy Constructor
@@ -39,7 +36,6 @@ Kindle::Kindle(const Kindle &kindle)
 :OnlineService(static_cast< OnlineService > (kindle))
 {
 	this->bookName = kindle.bookName;
-	this->bookAuthor = kindle.bookAuthor;
 	
 	kindleNumber++;
 }
@@ -47,7 +43,7 @@ Kindle::Kindle(const Kindle &kindle)
 // Destructor
 Kindle::~Kindle()
 {
-	cout << "~Kindle() called" << endl;
+//	cout << "~Kindle() called" << endl;
 	
 	kindleNumber--;
 }
@@ -55,10 +51,10 @@ Kindle::~Kindle()
 // Overload opperator <<
 ostream &operator<< (ostream &output, const Kindle &kindle)
 {
-	output << "Book: " << kindle.bookName << "\nAuthor: " << kindle.bookAuthor << endl;
-	cout << endl;
-	output << static_cast< OnlineService > (kindle) << endl;
 
+	output << static_cast< OnlineService > (kindle) << endl;
+	cout << endl;
+	output << "You are reading the book " << kindle.bookName << endl;
 	return output;
 }
 
@@ -66,8 +62,6 @@ ostream &operator<< (ostream &output, const Kindle &kindle)
 bool Kindle::operator== (const Kindle &kindle) const
 {
 	if (this->bookName != kindle.bookName)
-		return false;
-	if (this->bookAuthor != kindle.bookAuthor)
 		return false;
 	if (static_cast< OnlineService >(*this) != static_cast<OnlineService> (kindle))	
 		return false;
@@ -78,41 +72,17 @@ bool Kindle::operator== (const Kindle &kindle) const
 const Kindle &Kindle::operator= (const Kindle &kindle)
 {
 	this->bookName = kindle.bookName;
-	this->bookAuthor = kindle.bookAuthor;
 	
 	static_cast< OnlineService> (*this) = static_cast< OnlineService > (kindle);
 		
 	return *this;
 }
 
-// Set book name
-void Kindle::setBookName(string &book)
-{
-	bookName = book;
-}
-
-// Set author name
-void Kindle::setAuthorName(string &author)
-{
-	bookAuthor = author;
-}
-
-// Return book name
-string Kindle::getBookName() const
-{
-	return bookName;
-}
-
-// Rerturn author name
-string Kindle::getAuthorName() const
-{
-	return bookAuthor;
-}
-
 // Download one book
-void Kindle::downloadBook() const
+void Kindle::downloadBook(const string &book) 
 {
 	cout << "Downloading " << this->bookName << "..." << endl;
+	this->bookName = book;
 }
 
 // Show the Kindle number
@@ -127,4 +97,22 @@ void Kindle::showRecommended()
 	cout << "<<<< Recommended >>>>" << endl;
 	for(int i = 0; i < 5; i++)
 		cout << recommendBook[i] << endl;
+}
+
+// Print (Polymorphism)
+void Kindle::print() const
+{
+	cout << *this;
+}
+
+// Set book name
+void Kindle::setBookName(const string &book)
+{
+    bookName = book;
+}
+
+// Return book name
+string Kindle::getBookName() const
+{
+    return bookName;
 }

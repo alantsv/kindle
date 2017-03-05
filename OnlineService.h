@@ -20,7 +20,7 @@ public:
 	// Copy constructor
 	OnlineService(const OnlineService &);
 	// Destructor
-	~OnlineService();
+	virtual ~OnlineService();
 	// Defined operator ==
 	bool operator== (const OnlineService &) const;
 	// Defined operator !=
@@ -30,19 +30,13 @@ public:
 	}
 	// Defined assigment operator
 	const OnlineService &operator= (const OnlineService &);
-	// Add new user
-	void addUser(const User &);
-	// Show user
-	void showUserCount() const;
-	// Setup developer list
-	void setupDeveloperList(int);
-
+	// Virtual print
+	virtual void print() const;
 private:
 	int userCount;
 	User *users;
 	int developerCount;
 	string *developerList;
 	Data registerDate;
-
 };
 #endif

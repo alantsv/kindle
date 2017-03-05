@@ -17,7 +17,7 @@ public:
 	// Default constructor
 	Kindle();
 	// Constructor
-	Kindle(const string &, const string &, const Data & ,const User &, const string &);
+	Kindle(const string &, const Data & ,const User &, const string &);
 	// Copy constructor
 	Kindle(const Kindle &);
 	// Destructor
@@ -33,24 +33,19 @@ public:
 	const Kindle &operator= (const Kindle &);
 	// Buy one new book
 	void buyBook(const string &);
-	// Set book name
-	void setBookName(string &);
-	// Set author name
-	void setAuthorName(string &);
-	// Return book name
-	string getBookName() const;
-	// Return author name
-	string getAuthorName() const;
 	// Download one book
-	void downloadBook() const;
+	void downloadBook(const string &);
 	// Show Kindle unlimeted number
 	static int showKindleNumber();
 	// Show recommended book list
 	static void showRecommended();
+	// Print (Polymorphism)
+	void print() const;
+	string getBookName() const;
+	void setBookName(const string &);
 
 private:
 	string bookName;
- 	string bookAuthor;
 	static string recommendBook[5];
 	static int kindleNumber;
 };

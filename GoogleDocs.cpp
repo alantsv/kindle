@@ -2,65 +2,69 @@
 #include <ostream>
 #include <string>
 #include "GoogleDocs.h"
-#include "Data.h"
 using std::cout;
 using std::endl;
 using std::string;
 
 // Default Constructor
 GoogleDocs::GoogleDocs()
-:lastAcess(), OnlineService()
+:OnlineService()
 {
 	this->documentName = "";
 	this->editing = false;
 	this->docOpenCount = 0;
-	this->listDocumentOpen = new string[1];
-	this->listDocumentOpen[0] = this->documentName;
+	this->openDocumentList = new string[1];
+	this->openDocumentList[0] = this->documentName;
 }
 
 // Constructor
-GoogleDocs::GoogleDocs(const string &document, bool edit, const Data &lastDate, const User &user, const string &developer, const Data &date)
-:lastAcess(lastDate), OnlineService(user, developer, date)
+GoogleDocs::GoogleDocs(const string &document, bool edit, const User &user, const string &developer, const Data &date)
+:OnlineService(user, developer, date)
 {
 	this->documentName = document;
 	this->editing = edit;
 	this->docOpenCount = 1;
-	this->listDocumentOpen = new string[this->docOpenCount];
-	this->listDocumentOpen[0] = document;
+	this->openDocumentList = new string[this->docOpenCount];
+	this->openDocumentList[0] = document;
 
 }
 
 // Copy Constructor
 GoogleDocs::GoogleDocs(const GoogleDocs &googleDocs)
-:lastAcess(googleDocs.lastAcess), OnlineService(static_cast<OnlineService> (googleDocs))
+:OnlineService(static_cast<OnlineService> (googleDocs))
 {
 	this->documentName = googleDocs.documentName;
 	this->editing = googleDocs.editing;
 	this->docOpenCount = googleDocs.docOpenCount;
-	this->listDocumentOpen = new string[googleDocs.docOpenCount];
+	this->openDocumentList = new string[googleDocs.docOpenCount];
 	for (int i = 0; i < googleDocs.docOpenCount; i++)
-		this->listDocumentOpen[i] = googleDocs.listDocumentOpen[i];
-	this->lastAcess = googleDocs.lastAcess;
+		this->openDocumentList[i] = googleDocs.openDocumentList[i];
 }
 
 // Destructor
 GoogleDocs::~GoogleDocs()
 {
-	cout << "~GoogleDocs() called" << endl;
+//	cout << "~GoogleDocs() called" << endl;
 	
-	delete [] listDocumentOpen;
+	delete [] openDocumentList;
 }
 
 // Overload opperator <<
 ostream &operator<< (ostream &output, const GoogleDocs &googleDocs)
 {
-	output << "Last acess: " << googleDocs.lastAcess << "Document count: " << googleDocs.docOpenCount << endl;
-	output << "Document:" << googleDocs.documentName <<endl;
 
-	output << "Documents open recently:" << endl;
-	for (int i = 0; i < googleDocs.docOpenCount; i++)
-		output << "[" << i+1 << "] " << googleDocs.listDocumentOpen[i] << endl;
 	output << static_cast< OnlineService> (googleDocs) << endl;
+	cout << endl;
+	output << "Open document: " << googleDocs.documentName <<endl;
+	output << "Document number: " << googleDocs.docOpenCount << endl;
+	output << "Documents open recently ";
+	for (int i = 0; i < googleDocs.docOpenCount; i++)
+	{
+		output << googleDocs.openDocumentList[i];
+	if (i < googleDocs.docOpenCount-1)
+			cout << ", ";
+	}
+	cout << endl;
 
 	return output;
 }
@@ -75,10 +79,8 @@ bool GoogleDocs::operator== (const GoogleDocs &googleDocs) const
 	if (this->docOpenCount == googleDocs.docOpenCount)
 		return false;
 	for(int i = 0; i < googleDocs.docOpenCount; i++)
-		if (this->listDocumentOpen[i] == googleDocs.listDocumentOpen[i])
+		if (this->openDocumentList[i] == googleDocs.openDocumentList[i])
 			return false;
-	if (this->lastAcess == googleDocs.lastAcess)
-		return false;
 	if (static_cast< OnlineService >(*this) != static_cast<OnlineService> (googleDocs))	
 	return false;
 
@@ -91,11 +93,46 @@ const GoogleDocs &GoogleDocs::operator= (const GoogleDocs &googleDocs)
 	this->documentName = googleDocs.documentName;
 	this->editing = googleDocs.editing;
 	this->docOpenCount = googleDocs.docOpenCount;
-	delete [] this->listDocumentOpen;
-	this->listDocumentOpen = new string[this->docOpenCount];
+	delete [] this->openDocumentList;
+	this->openDocumentList = new string[this->docOpenCount];
 	for (int i = 0; i < googleDocs.docOpenCount; i++)
-		this->listDocumentOpen[i] = googleDocs.listDocumentOpen[i];
-	this->lastAcess = googleDocs.lastAcess;
+		this->openDocumentList[i] = googleDocs.openDocumentList[i];
 	static_cast< OnlineService> (*this) = static_cast< OnlineService > (googleDocs);
 	return *this;
+}
+
+void GoogleDocs::addDocList(const string &document)
+{
+	string *aux = new string[docOpenCount];
+	
+	for(int i = 0; i < docOpenCount; i++)
+		aux[i] = this->openDocumentList[i];
+		
+	delete [] this->openDocumentList;
+	
+	this->openDocumentList = new string[++docOpenCount];
+	
+	for(int i = 0; i < docOpenCount-1; i++)
+		this->openDocumentList[i] = aux[i];
+		
+	this->openDocumentList[docOpenCount-1] = document;
+	
+	delete [] aux;
+	
+	this->docOpenCount++;
+
+}
+
+void GoogleDocs::openDocument(const string &document)
+{
+	cout << "Openning " << document << "..." << endl;
+	this->documentName = document;
+	this->addDocList(document);
+	this->setupEditing();
+}
+
+// Print (Polymorphism)
+void GoogleDocs::print() const
+{
+	cout << *this << endl;
 }

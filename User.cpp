@@ -7,7 +7,7 @@ using std::endl;
 // Overload output operator
 ostream &operator<<(ostream &output, const User &user)
 {
-	output << "Name:\t"<< user.name << "\nAge:\t" << user.age << "\nID:\t" << user.idUser  << endl;
+	output << "Name: "<< user.name << "\nAge: " << user.age << "\nID: " << user.idUser  << endl;
 	return output;
 }
 
@@ -62,5 +62,5 @@ User::User(const string &nameUser, const int ageUser, const int idUser)
 //Destructor
 User::~User()
 {
-	cout << "~User() called" << endl;
+//	cout << "~User() called" << endl;
 }

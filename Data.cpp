@@ -7,8 +7,49 @@ using std::endl;
 // Overload output operator
 ostream &operator<< (ostream &output, const Data &date)
 {
-	output << date.dia << "/" << date.mes << "/" << date.ano << endl;
+	switch (date.mes){
+	case 1:
+		cout << "Jan";
+		break;
+	case 2:
+		cout << "Fev";
+		break;
+	case 3:
+		cout << "Mar";
+		break;
+	case 4:
+		cout << "Apr";
+		break;
+	case 5:
+		cout << "May";
+		break;
+	case 6:
+		cout << "Jun";
+		break;
+	case 7:
+		cout << "Jul";
+		break;
+	case 8:
+		cout << "Aug";
+		break;
+	case 9:
+		cout << "Sep";
+		break;
+	case 10:
+		cout << "Ouc";
+		break;
+	case 11:
+		cout << "Nov";
+		break;
+	case 12:
+		cout << "Dec";
+		break;
+	}
+	cout << " "<<date.dia << ", ";
+	cout << date.ano << endl;
+
 	return output;
+
 }
 
 // Overload operator ==
@@ -60,15 +101,14 @@ Data::Data(const Data &dateCopy)
 // Destructor
 Data::~Data()
 {
-	cout << "~Data() called" << endl;
+//	cout << "~Data() called" << endl;
 }
 
 
 // Print date
 void Data::print() const
 {
-   cout << dia << '/' << mes << '/' << ano;
-   
+	cout << dia << "/" << mes << "/" << ano << endl;
 }
 
 // Check date

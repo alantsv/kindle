@@ -21,8 +21,8 @@ KindleUnlimited::KindleUnlimited()
 }
 
 // Constructor
-KindleUnlimited::KindleUnlimited(const string &book, const string &author, const Data &regist,const Data &date, const User &user, const string &developer, bool sign, int count, const string &genre)
-:signatureDate(date), Kindle(book, author,regist, user,developer)
+KindleUnlimited::KindleUnlimited(const string &book, const Data &regist,const Data &date, const User &user, const string &developer, bool sign, int count, const string &genre)
+:signatureDate(date), Kindle(book,regist, user,developer)
 {
 	this->signature = true;
 	if (1 > count)
@@ -47,7 +47,7 @@ KindleUnlimited::KindleUnlimited(const KindleUnlimited &kindle)
 // Destructor
 KindleUnlimited::~KindleUnlimited()
 {
-	cout << "~KindleUnlimited() called" << endl;
+//	cout << "~KindleUnlimited() called" << endl;
 	delete [] genrePreferenceList;
 	
 }
@@ -90,6 +90,8 @@ const KindleUnlimited &KindleUnlimited::operator= (const KindleUnlimited &kindle
 		this->genrePreferenceList[i] = kindle.genrePreferenceList[i];
 	
 	static_cast< Kindle> (*this) = static_cast< Kindle > (kindle);
+
+	return *this;
 }
 
 // Choice book to read
