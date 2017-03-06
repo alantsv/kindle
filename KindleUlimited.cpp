@@ -100,29 +100,6 @@ void KindleUnlimited::readEBook(const string &ebook) const
 	cout << "Opening " << ebook << "..." << endl;
 }
 
-
-// Add genre to preference list
-void KindleUnlimited::setupPreferenceList(const string &newGenre)
-{
-	string *aux = new string[preferenceCount];
-	
-	for(int i = 0; i < preferenceCount; i++)
-		aux[i] = this->genrePreferenceList[i];
-		
-	delete [] this->genrePreferenceList;
-	
-	this->genrePreferenceList = new string[++preferenceCount];
-	
-	for(int i = 0; i < preferenceCount-1; i++)
-		this->genrePreferenceList[i] = aux[i];
-		
-	this->genrePreferenceList[preferenceCount-1] = newGenre;
-	
-	delete [] aux;
-	
-	this->preferenceCount++;
-}
-
 // Exit all devices
 void KindleUnlimited::exitAllDevice() const
 {
