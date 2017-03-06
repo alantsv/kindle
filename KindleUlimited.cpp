@@ -45,7 +45,7 @@ KindleUnlimited::KindleUnlimited(const KindleUnlimited &kindle)
 }
 
 // Destructor
-Kindle::~KindleUnlimited()
+KindleUnlimited::~KindleUnlimited()
 {
 //	cout << "~KindleUnlimited() called" << endl;
 	delete [] genrePreferenceList;
@@ -119,7 +119,7 @@ double KindleUnlimited::printCostMonth()
 }
 
 // Add genre to preference list
-void Kindle::setupPreferenceList(const string &newGenre)
+void KindleUnlimited::setupPreferenceList(const string &newGenre)
 {
 	string *aux = new string[preferenceCount];
 	
