@@ -1,5 +1,5 @@
-	#ifndef _ONLINESERVICE_H_
-	#define _ONLINESERVICE_H_
+#ifndef _ONLINESERVICE_H_
+#define _ONLINESERVICE_H_
 
 #include <ostream>
 #include <string>

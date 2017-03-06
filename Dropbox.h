@@ -24,9 +24,9 @@ public:
 	// Defined operator ==
 	bool operator== (const Dropbox &) const;
 	// Defined operator !=
-	bool operator!= (const Dropbox &googleDocs) const
+	bool operator!= (const Dropbox &dropbox) const
 	{
-		return ! (*this == googleDocs);
+		return ! (*this == dropbox);
 	}
 	// Defined assigment operator
 	const Dropbox &operator= (const Dropbox &);
