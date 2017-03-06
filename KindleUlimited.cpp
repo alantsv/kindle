@@ -45,7 +45,7 @@ KindleUnlimited::KindleUnlimited(const KindleUnlimited &kindle)
 }
 
 // Destructor
-KindleUnlimited::~KindleUnlimited()
+Kindle::~KindleUnlimited()
 {
 //	cout << "~KindleUnlimited() called" << endl;
 	delete [] genrePreferenceList;
@@ -116,4 +116,26 @@ int KindleUnlimited::showMaxUserShared()
 double KindleUnlimited::printCostMonth()
 {
 	return costForMonth;
+}
+
+// Add genre to preference list
+void Kindle::setupPreferenceList(const string &newGenre)
+{
+	string *aux = new string[preferenceCount];
+	
+	for(int i = 0; i < preferenceCount; i++)
+		aux[i] = this->genrePreferenceList[i];
+		
+	delete [] this->genrePreferenceList;
+	
+	this->genrePreferenceList = new string[++preferenceCount];
+	
+	for(int i = 0; i < preferenceCount-1; i++)
+		this->genrePreferenceList[i] = aux[i];
+		
+	this->genrePreferenceList[preferenceCount-1] = newGenre;
+	
+	delete [] aux;
+	
+	this->preferenceCount++;
 }
