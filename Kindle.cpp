@@ -116,3 +116,17 @@ string Kindle::getBookName() const
 {
     return bookName;
 }
+
+// Virtual help
+void Kindle::help() const
+{
+	cout << "Hello. What can we help you with?" << endl;
+	cout << "Amazon Device Support\tReturns & Refunds\tAccount Settings" << endl;
+}
+
+// Virtual register
+void Kindle::registerNewAccout() const
+{
+	cout << "[Amazon]\nHello. Sign in\nAccount & Lists" << endl;
+	cout << "Sing in\nEmail (phone for mobile accounts)\n\nPassword\tForgot your password?" << endl;
+}

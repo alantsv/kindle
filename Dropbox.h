@@ -31,9 +31,15 @@ public:
 	// Defined assigment operator
 	const Dropbox &operator= (const Dropbox &);
 	// Store files list
-	void storeFileDocument (const string &);
+	void storeFile (const string &);
+	// Recover exclued files
+	void recoverFile () const;
 	// Print info
 	void print() const;
+	// Help
+	void help() const;
+	// Register new account
+	void registerNewAccout() const;
 private:
 	int filesCount;
 	string *fileList;

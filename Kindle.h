@@ -41,9 +41,14 @@ public:
 	static void showRecommended();
 	// Print (Polymorphism)
 	void print() const;
+	// Return book name
 	string getBookName() const;
+	// Set book name
 	void setBookName(const string &);
-
+	// Help
+	void help() const;
+	// Register new account
+	void registerNewAccout() const;
 private:
 	string bookName;
 	static string recommendBook[5];

@@ -136,3 +136,20 @@ void GoogleDocs::print() const
 {
 	cout << *this << endl;
 }
+
+// Virtual help
+void GoogleDocs::help() const
+{
+	cout << "Help & Feedback" << endl;
+	cout << "Help" << endl;
+	cout << "Find or recover a file\nInsert and arrange text, shapes, and lines\nAdd a title, heading, or table of contents in a document\nCreate a survey using Google Forms" << endl;
+}
+
+// Virtual register
+void GoogleDocs::registerNewAccout() const
+{
+	cout << "Redirecting for Google Drive\n[Acess the Google Drive]\nRedirecting for Google" << endl;
+	cout << "One account. All of Google.\nSign in to continue to Google Drive" << endl;
+	cout << "Enter your email" << endl;
+	cout << "Next" << endl;
+}

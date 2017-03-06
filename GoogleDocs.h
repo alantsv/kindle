@@ -40,6 +40,10 @@ public:
 	}
 	// Print (Polymorphism)
 	void print() const;
+	// Help
+	void help() const;
+	// Register new account
+	void registerNewAccout() const;
 private:
 	string documentName;
 	int docOpenCount;

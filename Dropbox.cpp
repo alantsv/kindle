@@ -85,7 +85,8 @@ const Dropbox &Dropbox::operator= (const Dropbox &dropbox)
 	return *this;
 }
 
-void Dropbox::storeFileDocument(const string &document)
+// Store your Files
+void Dropbox::storeFile(const string &document)
 {
 	string *aux = new string[filesCount];
 	
@@ -107,8 +108,31 @@ void Dropbox::storeFileDocument(const string &document)
 
 }
 
+
+// Recover exclued files
+void Dropbox::recoverFile() const
+{
+	cout << "You don't any files for recover";
+}
+
 // Print (Polymorphism)
 void Dropbox::print() const
 {
 	cout << *this << endl;
+}
+
+// Virtual help
+void Dropbox::help() const
+{
+	cout << "How can we help you?" << endl;
+	cout << "Choose a category to find the help you need" << endl;
+	cout << "Sharing files and folders\nPayments and billing\nSecurity and privacy\nDropbox Business" << endl;
+}
+
+// Virtual register
+void Dropbox::registerNewAccout() const
+{
+	cout << "[Full name]\n[Email]\n[Password]\n[ ] I agree to Dropbox terms" << endl;
+	cout << "Sing up for free" << endl;
+	cout << "Sing up free with Google" << endl;
 }

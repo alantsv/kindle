@@ -1,5 +1,5 @@
-#ifndef _ONLINESERVICE_H_
-#define _ONLINESERVICE_H_
+	#ifndef _ONLINESERVICE_H_
+	#define _ONLINESERVICE_H_
 
 #include <ostream>
 #include <string>
@@ -32,6 +32,10 @@ public:
 	const OnlineService &operator= (const OnlineService &);
 	// Virtual print
 	virtual void print() const;
+	// Virtual help
+	virtual void help() const;
+	// Virtual register
+	virtual void registerNewAccout() const;
 private:
 	int userCount;
 	User *users;
