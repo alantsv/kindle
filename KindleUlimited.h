@@ -48,7 +48,7 @@ public:
 	static double printCostMonth();
 private:
 	const static int maxUserShared = 5;
-	Data signatureDate;
+	const Data signatureDate;
 	const static double costForMonth = 19.90;
 	bool signature;
 	int preferenceCount;
