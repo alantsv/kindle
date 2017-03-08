@@ -1,4 +1,3 @@
-
 #ifndef _KINDLE_H_
 #define _KINDLE_H_
 
@@ -17,7 +16,7 @@ public:
 	// Default constructor
 	Kindle();
 	// Constructor
-	Kindle(const string &, const Data & ,const User &, const string &);
+	Kindle(const string &, const Data & ,const User &, const string &, const string &, int);
 	// Copy constructor
 	Kindle(const Kindle &);
 	// Destructor
@@ -49,10 +48,14 @@ public:
 	void help() const;
 	// Register new account
 	void registerNewAccout() const;
+	// Setup preference genre list
+	void setupPreferenceList(const string &);
 private:
 	string bookName;
-	static string recommendBook[5];
+	static string  recommendBook[5];
 	static int kindleNumber;
+	int preferenceCount;
+	string *genrePreferenceList;
 };
 
 #endif

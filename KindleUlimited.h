@@ -17,7 +17,7 @@ public:
 	// Default constructor
 	KindleUnlimited();
 	// Constructor
-	KindleUnlimited(const string &, const Data &, const Data & ,const User &, const string &, bool, int count, const string &);
+	KindleUnlimited(const string &, const Data &, const Data & ,const User &, const string &, bool, const string &, int);
 	// Copy constructor
 	KindleUnlimited(const KindleUnlimited &);
 	// Destructor
@@ -38,8 +38,7 @@ public:
 	{
 		this->signature = !signature;
 	}
-	// Setup preference genre list
-	void setupPreferenceList(const string &);
+
 	// Force exit all device
 	void exitAllDevice() const;
 	// Show max number user shared same account
@@ -51,8 +50,7 @@ private:
 	Data signatureDate;
 	const static double costForMonth = 19.90;
 	bool signature;
-	int preferenceCount;
-	string *genrePreferenceList;
+
 };
 
 #endif

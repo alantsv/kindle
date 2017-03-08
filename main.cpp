@@ -24,7 +24,7 @@ int main()
 
 	vector < OnlineService * > services( 4 );
 
-	services[ 0 ] = new Kindle("A Coisa", today, me, "Amazon, Foxconn"); 
+	services[ 0 ] = new Kindle("A Coisa", today, me, "Amazon, Foxconn", "Terror", 1); 
 	services[ 1 ] = new GoogleDocs("relatorio-parcial", true, me, "Writely Team, Google", today );
 	services[ 2 ] = new Dropbox("relatorio-final.pdf", me, "Dropbox, Inc.", yesterday); 
 	services[ 3 ] = new Dropbox("proactive-ethernet-congestion-control.pdf", you, "Dropbox, Inc", today);
