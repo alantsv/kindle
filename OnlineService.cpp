@@ -109,14 +109,3 @@ const OnlineService &OnlineService::operator= (const OnlineService &onlineServic
 	return *this;
 }
 
-// Virtual print
-void OnlineService::print() const
-{}
-
-// Virtual help
-void OnlineService::help() const
-{}
-
-// Virtual register
-void OnlineService::registerNewAccout() const
-{}

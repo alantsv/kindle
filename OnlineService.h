@@ -31,11 +31,11 @@ public:
 	// Defined assigment operator
 	const OnlineService &operator= (const OnlineService &);
 	// Virtual print
-	virtual void print() const;
+	virtual void print() const = 0;
 	// Virtual help
-	virtual void help() const;
+	virtual void help() const = 0;
 	// Virtual register
-	virtual void registerNewAccout() const;
+	virtual void registerNewAccout() const = 0;
 private:
 	int userCount;
 	User *users;
